@@ -30,7 +30,7 @@ def load(path):
     Returns a list of strings; each strings correspoonds to one line in
     text file. Also returns a list containing the header of the text file.
     """
-    with open(path, "r", encoding="utf-8") as d:
+    with open(path, "r", encoding='latin-1') as d:
         header = [d.readline() for _ in range(5)]
         lines = d.readlines()
     return lines, header
