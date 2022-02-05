@@ -3,6 +3,9 @@ from datetime import datetime, timedelta
 
 
 def lines_to_dict(lines):
+	''' Construct a dictionary of lists which contain the
+	raw values. Add a placeholder list for Date.
+	'''
     data_dict = {'Xref': [], 'Yref': [], 'Date': [], 'Value': []}
 
     for i in range(len(lines)):
@@ -19,6 +22,9 @@ def lines_to_dict(lines):
 
 
 def datelist(dates):
+	''' Returns a list of dates in the range (1/1/1991, 12/1/2000), one
+	for each 'Value' item in data_dict.
+	'''
     start, end = [datetime.strptime(_, "%m/%d/%Y") for _ in dates]
     def total_dates(dt): return dt.month + 12 * dt.year
     dlist = []
