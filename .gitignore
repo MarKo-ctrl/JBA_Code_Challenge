@@ -1,2 +1,8 @@
 /data
 /__pycache__
+.gitignore
+/bin
+/lib
+/include
+/lib64
+*cfg
