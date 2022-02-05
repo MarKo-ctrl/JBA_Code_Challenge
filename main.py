@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import extract
 import transform
 import pandas as pd
