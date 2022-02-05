@@ -22,8 +22,8 @@ if __name__ == "__main__":
     #       Value: {len(data_dict['Value']}), Date: {len(data_dict['Date'])}")
 
     val_df = pd.DataFrame.from_dict(data_dict)
+
     engine = create_engine('sqlite:///data/precip_data.db', echo=True)
-    sqlite_connection = engine.connect()
-    sqlite_table = "Precipitation Grid Values"
-    val_df.to_sql(sqlite_table, sqlite_connection, if_exists='fail')
-    sqlite_connection.close()
+    with engine.begin() as connection:
+        sqlite_table = "Precipitation Grid Values"
+        val_df.to_sql(sqlite_table, connection, if_exists='fail')

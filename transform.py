@@ -3,9 +3,9 @@ from datetime import datetime, timedelta
 
 
 def lines_to_dict(lines):
-	''' Construct a dictionary of lists which contain the
-	raw values. Add a placeholder list for Date.
-	'''
+    ''' Construct a dictionary of lists which contain the
+    raw values. Add a placeholder list for Date.
+    '''
     data_dict = {'Xref': [], 'Yref': [], 'Date': [], 'Value': []}
 
     for i in range(len(lines)):
@@ -22,9 +22,9 @@ def lines_to_dict(lines):
 
 
 def datelist(dates):
-	''' Returns a list of dates in the range (1/1/1991, 12/1/2000), one
-	for each 'Value' item in data_dict.
-	'''
+    ''' Returns a list of dates in the range (1/1/1991, 12/1/2000), one
+    for each 'Value' item in data_dict.
+    '''
     start, end = [datetime.strptime(_, "%m/%d/%Y") for _ in dates]
     def total_dates(dt): return dt.month + 12 * dt.year
     dlist = []
@@ -32,8 +32,8 @@ def datelist(dates):
         y, m = divmod(t_m, 12)
         dlist.append(datetime(y, m+1, 1).strftime("%m/%d/%Y"))
 
-    dlist_full = []
-    for n in range(5226):
-        for m in range(len(dlist)):
-            dlist_full.append(dlist[m])
+        dlist_full = []
+        for n in range(5226):
+            for m in range(len(dlist)):
+                dlist_full.append(dlist[m])
     return dlist_full
